@@ -2,6 +2,19 @@
 
 Uses Moviepy, whisper, and llama3 to convert mp4 files to summarize text to meeting meetings.
 
+
+## Configure Ollama to for llama3
+Download and configure ollama to use llama3:
+
+https://ollama.com/
+
+```
+ollama pull llama3
+ollama run llama3
+```
+
+## Configure Python
+
 ```
 python3 -m venv 
 
