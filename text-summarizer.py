@@ -37,7 +37,7 @@ def process_chunks(file_path, chunk_size=1000):
     summarized_chunks = []
     
     word_count = len(text)
-    print("word count: ", word_count)
+    # print("word count: ", word_count)
 
     if word_count > 5000:
         for chunk in chunk_text(text, chunk_size):
@@ -64,4 +64,4 @@ summarized_chunk_arr = process_chunks(file_path)
 combined_summary = " ".join(summarized_chunk_arr)
 
 sum_chunk = summarize_using_llama3(combined_summary)
-print("summarized text: ", sum_chunk)
+print(sum_chunk)

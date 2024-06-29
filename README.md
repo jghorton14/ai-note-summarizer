@@ -3,6 +3,11 @@
 Uses Moviepy, whisper, and llama3 to convert mp4 files to summarize text to meeting meetings.
 
 
+## Create test mp4
+```
+yt-dlp -f mp4 "https://www.youtube.com/watch?v=9-GRzu6zbS0" -o test.mp4
+```
+
 ## Configure Ollama to for llama3
 Download and configure ollama to use llama3:
 
@@ -16,7 +21,7 @@ ollama run llama3
 ## Configure Python
 
 ```
-python3 -m venv 
+python3 -m venv myenv
 
 source myenv/bin/activate
 
@@ -35,7 +40,7 @@ python3 mp3-to-text.py
 
 3) summarize text
 ```
-python3 text-summarizer.py
+python3 text-summarizer.py > OUTPUT.md
 ```
 
 This will produce an output like this:
