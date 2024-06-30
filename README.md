@@ -65,3 +65,38 @@ This will produce an output like this:
     **Next Steps:** None specified, but it appears that Michael is committed to pursuing this idea further and exploring ways to make it more practical and safe.
 
     Note: The meeting minutes are based on the provided transcript and may contain errors or inaccuracies.
+
+    
+docker run -d -p 9099:9099 --add-host=host.docker.internal:host-gateway -v pipelines:/app/pipelines --name pipelines --restart always ghcr.io/open-webui/pipelines:main
+
+
+```
+export WEBUI_AUTH=True
+pip install open-webui
+open-webui serve
+```
+
+## Docker 
+
+Pull Ollama
+```
+docker pull ollama/ollama
+```
+
+Start Ollama with CPU only on port 11434
+```
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+```
+
+Run llama3 model
+```
+docker exec -it ollama ollama run llama3
+```
+
+
+
+Ensure ollama is up and running...
+```
+http://localhost:11434/
+```
+
