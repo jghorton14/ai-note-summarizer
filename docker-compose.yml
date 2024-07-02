@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  ollama:
+    build:
+      context: ./ollama
+    ports:
+      - "11434:11434"
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+networks:
+  default:
+    name: myapp-network

@@ -100,3 +100,5 @@ Ensure ollama is up and running...
 http://localhost:11434/
 ```
 
+docker-compose build
+docker-compose up
