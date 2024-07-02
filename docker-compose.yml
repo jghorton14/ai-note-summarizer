@@ -6,12 +6,14 @@ services:
       context: ./ollama
     ports:
       - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
 
   backend:
     build:
       context: ./backend
     ports:
-      - "5000:5000"
+      - "5001:5001"
 
   frontend:
     build:
@@ -20,6 +22,9 @@ services:
       - "80:80"
     depends_on:
       - backend
+
+volumes:
+  ollama:
 
 networks:
   default:

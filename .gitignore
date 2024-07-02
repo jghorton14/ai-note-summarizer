@@ -3,3 +3,4 @@ myenv/
 *.mp4
 *.mp3
 test.txt
+backend/*.pyc

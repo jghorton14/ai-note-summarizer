@@ -8,6 +8,19 @@ Uses Moviepy, whisper, and llama3 to convert mp4 files to summarize text to meet
 yt-dlp -f mp4 "https://www.youtube.com/watch?v=9-GRzu6zbS0" -o test.mp4
 ```
 
+## Install ffmpeg
+Linux
+```
+sudo apt install ffmpeg
+
+```
+
+Mac
+```
+brew install ffmpeg
+```
+
+
 ## Configure Ollama to for llama3
 Download and configure ollama to use llama3:
 
@@ -102,3 +115,18 @@ http://localhost:11434/
 
 docker-compose build
 docker-compose up
+
+
+## Local Development
+
+Start the backend flask app:
+```
+cd backend
+pip install -r requirements.txt
+python3 app.py
+``` 
+
+### Process File Endpoint:
+```
+curl -X POST http://127.0.0.1:5001/process-file
+```
