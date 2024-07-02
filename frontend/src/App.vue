@@ -1,30 +1,55 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div id="app">
+    <h1>Drag and Drop File Upload</h1>
+    <div 
+      class="drop-area" 
+      @dragover.prevent 
+      @dragenter.prevent 
+      @drop.prevent="handleDrop"
+    >
+      Drop files here
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'App',
+  methods: {
+    async handleDrop(event) {
+      const files = event.dataTransfer.files;
+      const formData = new FormData();
+      
+      for (let i = 0; i < files.length; i++) {
+        formData.append('file', files[i]);
+      }
+
+      try {
+        const response = await axios.post('http://localhost:5001/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+};
+</script>
+
+<style>
+.drop-area {
+  width: 300px;
+  height: 200px;
+  border: 2px dashed #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  cursor: pointer;
 }
 </style>
