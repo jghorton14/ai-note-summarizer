@@ -19,8 +19,6 @@ RUN npm run build
 # Stage 2: Serve the Vue 3 application with Nginx
 FROM nginx:alpine
 
-RUN ls -al
-
 # Copy the build output from the previous stage to the Nginx html directory
 COPY --from=build /app/dist /usr/share/nginx/html
 
