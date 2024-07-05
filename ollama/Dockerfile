@@ -1,10 +1,14 @@
-# Stage 1: Pull the model
+# Stage 1: Pull the model (if not already present)
 FROM ollama/ollama:latest as model-puller
 
-# Start Ollama server in the background
+# Start Ollama server in the background and pull the model if not present
 RUN ollama serve > /dev/null 2>&1 & \
     sleep 5 && \
-    ollama pull llama3 && \
+    if ! ollama list | grep -q llama3; then \
+        ollama pull llama3; \
+    else \
+        echo "llama3 model already present, skipping pull"; \
+    fi && \
     pkill ollama
 
 # Stage 2: Final image
